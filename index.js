@@ -2,9 +2,12 @@ const {PuppeteerHandler} = require("./webScrapping/PuppeteerHandler.js");
 const {CheerioReader} = require("./webScrapping/CheerioReader.js");
 const {DatabaseOperations} = require("./db/DBOperations");
 
-async function main(){
+async function main() {
     const puppeteerHandler = new PuppeteerHandler();
-    const pageContent = await puppeteerHandler.getPageContent("https://ru.kinorium.com/6324/");
+    const databaseOperations = new DatabaseOperations();
+
+    const pageContent = await puppeteerHandler.getPageContent("https://ru.kinorium.com/63246/");
+    const cheerioReader = new CheerioReader(pageContent);
 
     await cheerioReader.getDataFromPage(pageContent);
 
@@ -19,4 +22,4 @@ async function start() {
     console.log(time / 1000);
 }
 
-main();
+start();
