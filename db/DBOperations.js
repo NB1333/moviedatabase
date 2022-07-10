@@ -21,22 +21,24 @@ class DatabaseOperations {
             console.log(err);
         })
 
-        // Inserting data to table "actors" (actors_id, actors_name)
+        // Inserting data to table "actors" (actor_name)
         await this.#client.query(actors, (err, res) => {
             console.log(err);
         });
 
-        // Inserting data to table
+        // Inserting data to table "producers" (producer_name)
         await this.#client.query(`INSERT INTO producers (name) VALUES ('${movieData.producer}')`, (err, res) => {
             console.log(err);
         })
 
+        // Inserting data to table "genres" (genres_name)
         await this.#client.query(genres, (err, res) => {
             console.log(err);
             this.#client.end();
         })
     }
 
+    //get database's client
     get getClient(){
         return this.#client;
     }

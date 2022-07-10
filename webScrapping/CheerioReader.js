@@ -1,12 +1,17 @@
 const cheerio = require("cheerio");
 
+// This class using for getting data from html, that we got using the puppeteer
 class CheerioReader {
     #movieData = {};
 
+    // Constructor that starts the cheerio
     constructor(pageContent) {
         this.$ = cheerio.load(pageContent);
     }
 
+    /* Getting data from specific html (title, duration, poster, realize, country,
+        budget, duration, rate, description, actors, genres, producer
+    */
     async getDataFromPage(pageContent) {
         let genres = [];
         let cast = [];
@@ -48,6 +53,7 @@ class CheerioReader {
 
     }
 
+    //Getter data that we got using cheerio
     get getMovieData(){
         return this.#movieData;
     }
