@@ -16,17 +16,14 @@ class CheerioReader {
         let genres = [];
         let cast = [];
 
-        // this.#movieData['e404'] = this.$('.error404 h1').text();
+        this.#movieData['e404'] = this.$('.error404 h1').text();
 
         this.#movieData['title'] = this.$('.film-page__title-elements-wrap h1').text();
 
         this.#movieData['poster'] = this.$('.jsCarouselImageContainer img')
             .attr('src');
 
-        // this.#movieData["isSeries"] = this.$('.film-page__title span.film-page__serial-label').text();
-        // this.#movieData["episodes"] = this.$('span.episode').text();
-
-        // this.#movieData['table'] = this.$("table.infotable").text();
+        this.#movieData["episodes"] = this.$('span.episode_number').text();
 
         this.#movieData['relize'] = this.$('.film-page__title-elements-wrap a').text();
 

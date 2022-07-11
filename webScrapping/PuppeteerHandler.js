@@ -1,4 +1,6 @@
 const puppeteer = require("puppeteer");
+const {LAUNCH_PUPPETEER_OPTS} = require("./Options");
+const {PAGE_PUPPETEER_OPTS} = require("./Options");
 
 // This class using for getting full html of page
 class PuppeteerHandler{
@@ -8,7 +10,7 @@ class PuppeteerHandler{
 
     // Browser initialization and start of "puppeteer"
     async initBrowser(){
-        this.browser = await puppeteer.launch();
+        this.browser = await puppeteer.launch(LAUNCH_PUPPETEER_OPTS);
     }
 
     // Closing of browser and end of "puppeteer"
@@ -23,7 +25,7 @@ class PuppeteerHandler{
         }
 
         const page = await this.browser.newPage();
-        await page.goto(url, { waitUntil: 'load', timeout: 0 });
+        await page.goto(url, PAGE_PUPPETEER_OPTS);
 
         return await page.content();
     }
