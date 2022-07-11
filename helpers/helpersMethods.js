@@ -28,11 +28,14 @@ class HelperMethods {
         });
     }
 
-    static async measureTime(main){
-        let start = new Date();
-        await main();
-        let time = new Date() - start;
-        console.log(time / 1000);
+    // Measure the execution time of specific function
+    static async measureTime(func){
+        let startTime = new Date();
+        await func();
+        let time = new Date() - startTime;
+        let timeInSeconds = time / 1000;
+        console.log("Execution time: %fs", timeInSeconds);
+
     }
 }
 

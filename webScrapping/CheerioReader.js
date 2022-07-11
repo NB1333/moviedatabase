@@ -12,14 +12,21 @@ class CheerioReader {
     /* Getting data from specific html (title, duration, poster, realize, country,
         budget, duration, rate, description, actors, genres, producer
     */
-    async getDataFromPage(pageContent) {
+    async getDataFromPage() {
         let genres = [];
         let cast = [];
+
+        // this.#movieData['e404'] = this.$('.error404 h1').text();
 
         this.#movieData['title'] = this.$('.film-page__title-elements-wrap h1').text();
 
         this.#movieData['poster'] = this.$('.jsCarouselImageContainer img')
             .attr('src');
+
+        // this.#movieData["isSeries"] = this.$('.film-page__title span.film-page__serial-label').text();
+        // this.#movieData["episodes"] = this.$('span.episode').text();
+
+        // this.#movieData['table'] = this.$("table.infotable").text();
 
         this.#movieData['relize'] = this.$('.film-page__title-elements-wrap a').text();
 
@@ -39,6 +46,7 @@ class CheerioReader {
         this.$('a.film-page__main-cast-info').each((index, element) => {
             cast[index] = this.$(element).text();
         });
+
         this.#movieData['actors'] = cast;
 
         this.#movieData['producer'] = this.$('span.away-transparency')
