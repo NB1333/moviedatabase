@@ -23,7 +23,7 @@ class PuppeteerHandler{
         }
 
         const page = await this.browser.newPage();
-        await page.goto(url);
+        await page.goto(url, { waitUntil: 'load', timeout: 0 });
 
         return await page.content();
     }
