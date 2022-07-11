@@ -14,8 +14,6 @@ class HelperMethods {
 
         request = request.slice(0, request.length - 2);
 
-        console.log(request);
-
         return request;
     }
 
